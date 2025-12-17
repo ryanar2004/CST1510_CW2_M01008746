@@ -20,7 +20,11 @@ if 'splash_done' not in st.session_state:
     st.session_state.splash_done = False
 
 if not st.session_state.splash_done:
+<<<<<<< HEAD
    
+=======
+  
+>>>>>>> 4e5232905a710323182ace0ade5dfb40279d90fe
     st.markdown("""
         <style>
             #MainMenu {visibility: hidden;}
@@ -40,7 +44,11 @@ if not st.session_state.splash_done:
 
     time.sleep(3.2)
 
+<<<<<<< HEAD
  
+=======
+   
+>>>>>>> 4e5232905a710323182ace0ade5dfb40279d90fe
     splash_placeholder.empty()
     st.session_state.splash_done = True
 
