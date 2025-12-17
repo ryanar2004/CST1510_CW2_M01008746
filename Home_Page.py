@@ -15,12 +15,12 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-# --- Only show splash once per session ---
+
 if 'splash_done' not in st.session_state:
     st.session_state.splash_done = False
 
 if not st.session_state.splash_done:
-    # Hide sidebar, header, footer
+  
     st.markdown("""
         <style>
             #MainMenu {visibility: hidden;}
@@ -30,7 +30,6 @@ if not st.session_state.splash_done:
         </style>
     """, unsafe_allow_html=True)
 
-    # Splash animation
     splash_placeholder = st.empty()
     with splash_placeholder.container():
         with open("welcome_logo.json") as f:
@@ -41,11 +40,10 @@ if not st.session_state.splash_done:
 
     time.sleep(3.2)
 
-    # Clear splash and mark as done
+   
     splash_placeholder.empty()
     st.session_state.splash_done = True
 
-# --- Main page and sidebar now visible ---
 st.markdown("""
     <style>
         #MainMenu {visibility: visible;}
