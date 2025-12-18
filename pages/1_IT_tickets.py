@@ -39,28 +39,31 @@ col1, col2, col3 = st.columns(3)
 
 
 with col1:
-    st.subheader(f"Tickets with status: {status}")
-    st.bar_chart(filtered_data["status"].value_counts())
-    st.write("This chart shows the distribution of ticket statuses.")
-
+    with st.expander(f"View tickets with status: {status}"):
+        st.subheader(f"Tickets with status: {status}")
+        st.bar_chart(filtered_data["status"].value_counts())
+        st.write("This chart shows the distribution of ticket statuses.")
 
 with col2:
-    st.subheader(f"Tickets assigned to: {assigned}")
-    assigned_counts = filtered_data[filtered_data['assigned_to'] == assigned]['assigned_to'].value_counts()
-    st.bar_chart(assigned_counts)
-    st.write("This chart shows the number of tickets assigned to the selected IT support specialist.")
+    with st.expander(f"View tickets assigned to: {assigned}"):
+        st.subheader(f"Tickets assigned to: {assigned}")
+        assigned_counts = filtered_data[filtered_data['assigned_to'] == assigned]['assigned_to'].value_counts()
+        st.bar_chart(assigned_counts)
+        st.write("This chart shows the number of tickets assigned to the selected IT support specialist.")
 
-
-with col3: 
-    st.subheader("Tickets Over Time") 
-    tickets_over_time = filtered_data.groupby(filtered_data['Time'].dt.date).size().reset_index(name='counts') 
-    line_chart = alt.Chart(tickets_over_time).mark_line(point=True).encode( 
-        x='Time:T', y='counts:Q' 
-        ).properties( 
-            width=300, height=200 ) 
-    
-    st.altair_chart(line_chart, use_container_width=True) 
-    st.write("This chart shows the number of tickets created over time.")
+with col3:
+    with st.expander("View tickets over time"):
+        st.subheader("Tickets Over Time")
+        tickets_over_time = filtered_data.groupby(filtered_data['Time'].dt.date).size().reset_index(name='counts')
+        line_chart = alt.Chart(tickets_over_time).mark_line(point=True).encode(
+            x='Time:T', 
+            y='counts:Q'
+        ).properties(
+            width=600,   
+            height=400  
+        )
+        st.altair_chart(line_chart, use_container_width=True)
+        st.write("This chart shows the number of tickets created over time.")
 
 st.subheader("Filtered Tickets")
 st.dataframe(filtered_data)
