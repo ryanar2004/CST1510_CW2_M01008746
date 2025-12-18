@@ -70,7 +70,7 @@ tab_login, tab_logout, tab_register = st.tabs(["Login", "Logout", "Register"])
 with tab_login:
     login_username = st.text_input("Username", key="login_username")
     login_password = st.text_input("Password", type="password", key="login_password")
-    login_role = st.selectbox("Role", ["User", "Admin"], key="login_role")
+    login_role = st.selectbox("Role", ["User", "IT Specialist"], key="login_role")
 
     if st.button("Log In"):
         id, user_name, user_hash, role = get_user(conn, login_username)
@@ -91,13 +91,13 @@ with tab_logout:
 with tab_register:
     regiserter_username = st.text_input("New Username")
     registered_password = st.text_input("New Password", type="password")
-    registered_role = st.selectbox("Choose a role", ["User", "Admin"])
+    registered_role = st.selectbox("Choose a role", ["User", "IT Specialist"])
     hash_password = generate_hash(registered_password)
 
     if st.button("Register"):
         st.session_state['logged_in'] = False
         add_user(conn, regiserter_username, hash_password, registered_role)
-        if registered_role == "Admin":
-            st.success("Registered successfully as an admin, please log in")
+        if registered_role == "IT Specialist":
+            st.success("Registered successfully as an IT Specialist, please log in")
         else:
             st.success("Registered successfully as a user, please log in")
