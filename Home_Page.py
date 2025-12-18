@@ -22,7 +22,6 @@ if 'splash_done' not in st.session_state:
 if not st.session_state.splash_done:
 <<<<<<< HEAD
    
-=======
   
 >>>>>>> 4e5232905a710323182ace0ade5dfb40279d90fe
     st.markdown("""
