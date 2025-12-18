@@ -48,7 +48,7 @@ with col2:
     st.subheader(f"Tickets assigned to: {assigned}")
     assigned_counts = filtered_data[filtered_data['assigned_to'] == assigned]['assigned_to'].value_counts()
     st.bar_chart(assigned_counts)
-    st.write("This chart shows the number of tickets assigned to the selected person.")
+    st.write("This chart shows the number of tickets assigned to the selected IT support specialist.")
 
 
 with col3: 
