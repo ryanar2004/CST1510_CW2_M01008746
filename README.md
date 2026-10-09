@@ -1,1 +1,14 @@
-This is a coursework for Year 1 module CST1510, an API monitoring Dashboard for IT. It contains a login and register page as well as an admin dashboard to track status and priority of IT tickets.
+# IT API Monitoring Dashboard
+
+This project was developed as part of the Year 1 CST1510 module. It is an IT monitoring dashboard built with Streamlit, featuring user login and registration, an admin dashboard for monitoring IT tickets by status and priority, and an AI-powered chatbot using the Groq API.
+
+## Requirements
+
+- Python 3.13
+- streamlit
+- streamlit-lottie
+- groq
+- python-dotenv
+- bcrypt
+- pandas
+- altair

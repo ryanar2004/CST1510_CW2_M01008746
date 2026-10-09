@@ -1,10 +1,10 @@
 import pandas as pd
 
-from app_model.db import conn
+from app_model.db import get_connection
 from app_model.users import add_user, get_user
 from hashing import generate_hash, is_valid_hash
 
-#user regirstration
+#user registration
 def register_user(conn):
     name = input("Enter your name: ")
     password = input("Enter your password: ")
@@ -26,6 +26,7 @@ def login_user(conn):
 
 
 def main():
+    conn = get_connection()
     while True:
         print("Welcome to the User Authentication System")
         choice = input("Choose an option: \n1. Register\n2. Login\n3. Exit\n")

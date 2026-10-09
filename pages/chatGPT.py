@@ -1,8 +1,12 @@
-import streamlit as st
+import os
+from pathlib import Path
+from dotenv import load_dotenv
 from groq import Groq
+import streamlit as st
 
-client = Groq(api_key='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')
+load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 st.title("Chat with your AI buddy, ChatGPT 🤖!")
 
 
