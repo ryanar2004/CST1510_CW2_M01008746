@@ -6,8 +6,14 @@ import streamlit as st
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-st.title("Chat with your AI buddy, ChatGPT 🤖!")
+api_key = os.getenv("GROQ_API_KEY")
+
+if not api_key:
+    api_key = st.secrets.get("GROQ_API_KEY")
+
+client = Groq(api_key=api_key)
+
+st.title("Chat with your AI buddy, ChatGPT!")
 
 
 if 'messages' not in st.session_state:
